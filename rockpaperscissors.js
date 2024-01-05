@@ -1,5 +1,7 @@
-let playerWin = true;
 const CHOICES = ['rock','paper','scissors']
+let playerWin = true;
+
+
 function getComputerChoice() {
     choiceComputer = Math.floor(Math.random() * 3)
     switch(choiceComputer) {
@@ -51,4 +53,39 @@ function roundRockPaperScissors(throwComputer, throwPlayer) {
         console.log('player lost! :(')
     } 
     return playerWin;
+}
+// TODO: create loop for a game of rockpaper scissors
+
+function gameRockPaperScissors(playerPoints, computerPoints, winner) {
+    // loop through round function with a counter until the counter reaches 3 wins or 3 losses
+    // true = player win false = computer win
+    playerPoints = 0;
+    computerPoints = 0;
+    winner = false;
+    for (let iRoundsPlayed = 0; iRoundsPlayed < 5; iRoundsPlayed++) {
+        if(roundRockPaperScissors()) {
+            playerPoints++;
+        } 
+        else {
+            computerPoints++;
+        }
+        console.log(`player has ${playerPoints} points and computer has ${computerPoints}`)
+        if (playerPoints === 3) {
+            winner = true;
+            break;
+        }
+        else if (computerPoints === 3) {
+            winner = false;
+            break;
+        }
+    }
+    if (winner = true) {
+        console.log(`Player has won ${playerPoints}-${computerPoints}`);
+        return winner;
+    }
+    else {
+        console.log(`Computer has won ${computerPoints}-${playerPoints}`);
+        return winner;
+    }
+
 }
